@@ -19,4 +19,10 @@
       <input id="submit" type="submit" />
     </form>
   </div>
+  <div ng-show="vm.transportationRisk()">
+    <label>Do you need help with transportation?</label><button ng-click="vm.needsTransport = true">Yes</button>
+    <div ng-show="vm.needsTransport">
+      <a ng-href="https://www.auntbertha.com/transit/help-pay-for-transit?postal={{vm.patient.address[0].postalCode}}">Aunt Bertha transportation help</a>
+    </div>
+  </div>
 </section>
