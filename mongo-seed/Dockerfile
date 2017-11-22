@@ -1,5 +1,5 @@
 #Seed Data
 FROM mongo
 
-COPY MAZips.csv /MAZips.csv
--CMD mongoimport --host --db reach-engine db --collection MAZips --type csv --file /MAZips.csv --fields Zip.string(),Score.double() --columnsHaveTypes
+COPY mazips.json /mazips.json
+CMD mongoimport --host mongodb --db reach-engine --collection mazips --type json --file /mazips.json --jsonArray

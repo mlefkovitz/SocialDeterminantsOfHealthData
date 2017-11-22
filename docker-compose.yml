@@ -16,6 +16,7 @@ services:
      - mongodb
     volumes_from:
      - web-data
+     
   web-data:
     build: .
     entrypoint: /bin/true
@@ -24,11 +25,13 @@ services:
      - /opt/mean.js/node_modules
      - /opt/mean.js/public
      - /opt/mean.js/uploads
+     
   mongodb:
     image: mongo:3.2
     restart: always
     ports:
      - "27017:27017"
+    
   mongo-seed:
     build: ./mongo-seed
     depends_on:
