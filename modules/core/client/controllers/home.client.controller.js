@@ -9,24 +9,30 @@
     var vm = this;
     vm.patientID = "";
     vm.patient = null;
+    vm.patientScore = null;
+    vm.scoreThreshold = 1.0;
 
     vm.patientSearch = function() {
       $http.get('https://fhirtesting.hdap.gatech.edu/hapi-fhir-jpaserver-example/baseDstu3/Patient/'+vm.patientID).success(function(data) {
         //bind json response to patient as a FHIR json Patient
-        alert(JSON.stringify(data.address[0].postalCode));
         vm.patient = data;
+        vm.scoreZip();
       }).error(function(data) {
         alert(data.issue[0].diagnostics);
       });
     }
 
+    vm.scoreZip = function() {
+      $http.get('http://localhost:3000/scoreZip/' + vm.patient.address[0].postalCode).success(function(data) {
+        vm.patientScore = data;
+        alert(vm.patientScore);
+      });
+
+
+    }
+
     vm.transportationRisk = function() {
-      if(vm.patient) { //TODO: add logic here
-        return true;
-      }
-      else {
-        return false;
-      }
+      return vm.patientScore !== null && vm.patientScore <= vm.scoreThreshold;
     }
   }
 }());

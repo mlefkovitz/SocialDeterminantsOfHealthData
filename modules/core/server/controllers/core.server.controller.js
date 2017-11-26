@@ -2,7 +2,32 @@
 
 var validator = require('validator'),
   path = require('path'),
+  mongoose = require('mongoose'),
   config = require(path.resolve('./config/config'));
+
+var ZipRecord = mongoose.model('ZipRecord', {
+  zip: String,
+  score: Number
+}, 'mazips');
+
+
+exports.scoreZip = function (req, res) {
+  var record = {};
+  console.log(req.params.zipCode);
+  ZipRecord.findOne({ zip: req.params.zipCode }, function(err, record) {
+    if (err) {
+      return res.status(500).send({ message: err });
+    } else if (!record) {
+      return res.status(404).send({
+        message: "Zip code not found!"
+      });
+    } else {
+      console.log(record);
+      res.json(record.score);
+    }
+  });
+};
+
 
 /**
  * Render the main application page

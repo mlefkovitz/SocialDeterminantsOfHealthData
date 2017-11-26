@@ -4,6 +4,9 @@ module.exports = function (app) {
   // Root routing
   var core = require('../controllers/core.server.controller');
 
+  // mongo get zip
+  app.route('/scoreZip/:zipCode').get(core.scoreZip);
+
   // Define error pages
   app.route('/server-error').get(core.renderServerError);
 
