@@ -26,6 +26,8 @@
       $http.get('http://localhost:3000/scoreZip/' + vm.patient.address[0].postalCode).success(function(data) {
         vm.patientScore = data;
         alert(vm.patientScore);
+      }).error(function(data) {
+        alert(JSON.stringify(data));
       });
 
 
