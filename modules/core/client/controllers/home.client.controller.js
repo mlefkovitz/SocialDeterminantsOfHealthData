@@ -23,7 +23,7 @@
     }
 
     vm.scoreZip = function() {
-      $http.get('https://fhirtesting.hdap.gatech.edu/SocialDeterminantHealth/scoreZip/' + vm.patient.address[0].postalCode).success(function(data) {
+      $http.get('scoreZip/' + vm.patient.address[0].postalCode).success(function(data) {
         vm.patientScore = data;
         alert(vm.patientScore);
       }).error(function(data) {
