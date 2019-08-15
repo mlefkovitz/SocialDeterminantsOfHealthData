@@ -9,6 +9,7 @@ This application will assist the healthcare provider in identifying social deter
 In this current version of the application, the risk assessment is limited to the SDH transportation.
 
 See our project presentation below:
+
 [![Presentation](http://img.youtube.com/vi/HfXpf0RJ97M/0.jpg)](http://www.youtube.com/watch?v=HfXpf0RJ97M)
 
 [Presentation Slides](/Final%20Deliverables/Final%20Project%20Presentation%20-%20Team%20GT-MKSM.pdf)
